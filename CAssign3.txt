@@ -1,0 +1,490 @@
+//P1 WAP to accept a character and a number
+#include<stdio.h>
+int main(){
+    int n;
+    printf("Enter the number: ");
+    scanf("%d",&n);
+    
+    char c;
+    printf("Enter the character:");
+    scanf("%c",&c);
+    
+    while(n>0){
+        printf("%c",c);
+        n-=1;
+    }
+    return 0;
+    
+}
+
+//P2 TABLE OF A GIVEN NUMBER
+#include<stdio.h>
+int main(){
+    int n;
+    int i=1;
+  
+    printf("Enter the value of n");
+    scanf("%d",&n);
+    
+    
+    while(i<=10){
+        printf("%d X %d = %d \n ",n,i,n*i);
+        i++;
+        
+    }
+    return 0;
+    
+}
+
+//P3 ACCEPT A NUMBER
+// CALCULATE SUM OF DIGITS
+#include<stdio.h>
+int main(){
+    int num;
+    int digit,sum=0;
+    printf("Enter the number: ");
+    scanf("%d",&num);
+    while(num>0){
+          digit=num%10;
+          sum=sum+digit;
+          num=num/10;
+    }
+    printf("sum of digits of  %d is %d",num,sum);
+          
+    return 0;
+}
+
+//REVERSE A NUMBER 
+#include<stdio.h>
+int main(){
+    int num;
+    int digit,rev=0;
+    printf("Enter the number: ");
+    scanf("%d",&num);
+    while(num>0){
+          digit=num%10;
+          rev=rev*10+digit;
+          num=num/10;
+    }
+    printf("reverse of digits of  %d is %d",num,rev);
+          
+    return 0;
+}
+
+//ARMSTRONG NUMBER
+#include<stdio.h>
+#include<math.h>
+int main(){
+    int num;
+    int digit,cube,sum=0;
+    
+    printf("Enter a number");
+    scanf("%d",&num);
+    int real=num;
+    while(num>0){
+        digit=num%10;
+        cube=pow(digit,3);
+        sum=sum+cube;
+        num=num/10;
+    }
+    if(sum==real){
+        printf("Armstrong number");
+    
+    }
+    else{
+        printf("Not armstrong number");
+    }
+          
+    return 0;
+}
+
+//P4 FACTORIAL OF A NUMBER
+#include<stdio.h>
+int main(){
+    int num;
+    printf("Enter the number: ");
+    scanf("%d",&num);
+    int fact=1;
+    while(num>0){
+        fact=fact*num;
+        num--;
+    }
+    printf("factorial is %d",fact);
+    
+          
+    return 0;
+}
+
+// P6 FACTORS OF A NUMBER EXCEPT THE NUMBER
+#include<stdio.h>
+int main(){
+    int num;
+    printf("Enter the number: ");
+    scanf("%d",&num);
+    int i=1;
+    while(i<num){
+        if(num%i==0){
+            printf("%d \t",i);
+        }
+        i++;
+    }
+    
+          
+    return 0;
+}
+//p7 UNIQUE PAIR OF FACTORS
+#include<stdio.h>
+int main(){
+    int n,k=1;
+    printf("Enter the number");
+    scanf("%d",&n);
+    
+    while(k<n){
+        if(n%k==0){
+            if(k<n/k){
+                printf("%d * %d = %d\n",k,n/k,n);
+            }
+        }
+        k++;
+    }
+    return 0;
+}
+
+//P8 PRIME FACTORS
+#include<stdio.h>
+int main(){
+    int n,k,j=2;
+    int count=0;
+    printf("Enter the number");
+    scanf("%d",&n);
+    while(k<n){
+        if(n%k==0){
+            while(j<k){
+                if(k%j==0){
+                    count++;
+                }
+                j++;
+            }
+            
+        }
+        if(count==0){
+            printf("%d is a prime factor of %d ",k,n);
+        }
+         k++;
+    
+    }
+    
+    
+    
+}
+
+// P9 EUCLIDEAN ALGORITHM
+
+
+#include<stdio.h>
+int main(){
+    int a,b,rem;
+    int num1,num2;
+    int temp;
+    int gcd;
+    printf("Enter the value of a and b: ");
+    scanf("%d %d",&a,&b);
+    
+    if(a<b){
+        num1=b;
+        num2=a;
+        
+    }
+    else{
+        num1=a;
+        num2=b;
+    
+    rem=num1%num2;
+    while(rem!=0){
+        num1=b;
+        num2=rem;
+        rem=num1%num2;
+    }
+    }
+    gcd=num2;
+    printf("GCD 0f %d and %d is: %d",a,b,gcd);
+    
+    
+    
+}
+
+//-------------FOR LOOP---------------
+//p10 PRINT TABLE OF A GIVEN NUMBER
+
+#include<stdio.h>
+int main(){
+    int n;
+    printf("Enter the number");
+    scanf("%d",&n);
+    int i=1;
+    for(i=1;i<=10;i++){
+        printf("%d * %d = %d\n",n,i,n*i);
+    }
+    return 0;
+}
+
+//p11 FACTORIAL OF A GIVEN NUMBER
+#include<stdio.h>
+int main(){
+    int n,i,fact=1;
+    printf("Enter the number");
+    scanf("%d",&n);
+    if(n<0){
+        printf("Error! the number cannot be negative");
+    }
+    else{
+        for(i=1;i<=n;i++){
+        fact=fact*i;
+    }
+    printf("Factorial is %d: ",fact);
+        
+    }
+    return 0;
+}
+
+//12 Power of a number
+#include<stdio.h>
+int main(){
+    int base,index,i;
+    int power=1;
+    printf("Enter the value of base and index");
+    scanf("%d %d",&base,&index);
+    
+    if(index==0){
+        printf("The value of power is 1");
+    }
+    else{
+        for(i=1;i<=index;i++){
+            power*=base;
+            
+        }
+        printf("The value of power is %d",power);
+    }
+    
+    return 0;
+}
+
+//P13 FIBONACCI SERIES
+#include <stdio.h>
+int main() {
+  int t1 = 0, t2 = 1, nextTerm = 0, n;
+  printf("Enter a positive number: ");
+  scanf("%d", &n);
+  printf("Fibonacci Series: %d, %d, ", t1, t2);
+  nextTerm = t1 + t2;
+
+  while (nextTerm <= n) {
+    printf("%d, ", nextTerm);
+    t1 = t2;
+    t2 = nextTerm;
+    nextTerm = t1 + t2;
+  }
+
+  return 0;
+}
+
+//P14 PRIME NUMBER OR NOT
+#include <stdio.h>
+int main()
+{
+ 
+   int n, i, count = 0;
+ 
+    printf("Enter number to check prime number or not");
+    scanf("%d",&n);
+ 
+    for(i=2; i<=n/2; ++i)
+    {
+        if(n%i==0)
+        {
+            count=1;
+            break;
+        }
+    }
+ 
+    if (count==0)
+        printf("%d is a prime number.",n);
+    else
+        printf("%d is not a prime number.",n);
+ 
+      
+}
+
+// P15 RANDOM NUMBER GAME
+#include <stdio.h>
+#include<stdlib.h>
+int main()
+{
+   int number,guess,noguesses=1;
+  srand(time(0));
+   number = rand()%1000 + 1;
+   do{
+       printf("Guess the number between 1 to 1000 \n");
+       scanf("%d",&guess);
+       if(guess>number){
+           printf("Shift left\n");
+       }
+       else if(guess<number){
+           printf("Shift right\n");
+       }
+       else{
+           printf("You have guessed the no right in %d number of attempts ",noguesses);
+       }
+       noguesses++;
+       
+   }while(guess!=number);
+   return 0;
+}
+
+
+
+
+
+
+//Nested Loops
+// P17 pattern1
+#include <stdio.h>
+int main()
+{
+   int i,j;
+   for(i=1;i<=5;i++){
+       for(j=1;j<=5;j++){
+           printf("*");
+       }
+       printf("\n");
+   }
+   
+   return 0;
+}
+
+// P18 PRINT THE NUMBER OF TABLES FROM 1 TO 10
+
+#include <stdio.h>
+
+int main()
+{
+   int n,m;
+//   int i,j;
+   
+   for(n=1;n<=10;n++){
+       for(m=1;m<=10;m++){
+           printf(" %d * %d = %d \n ",n,m,n*m);
+       }
+       printf("\n");
+   }
+   return 0;
+}
+
+//P19 ACCEPT A RANGE AND THEN PRINT THE TABLE OF THAT RANGE
+#include <stdio.h>
+
+int main()
+{
+   int n,m;
+   printf("Enter range n and m: ");
+   scanf("%d %d",&n,&m);
+   int i,j;
+   
+   for(i=n;i<=m;i++){
+       for(j=1;j<=10;j++){
+           printf(" %d * %d = %d \n ",i,j,i*j);
+       }
+       printf("\n");
+   }
+   return 0;
+}
+
+//P21 Write a program to display First 5 prime numbers after a given number.
+
+#include <stdio.h>
+
+int main()
+{
+   int n;
+   int i,j;
+   int count=6,flag=0;
+   printf("Enter a number: ");
+   scanf("%d",&n);
+   for(j=n+1;j<count;j++){
+       for(i=2;i<j;i++){
+           if(j%i==0){
+             flag=1;
+            }
+        }
+        
+        if (flag==0){
+         printf("%d \t ",j);
+        }
+       
+    }
+   
+   
+   
+   
+   return 0;
+}
+
+// PATTERN
+#include <stdio.h>
+
+int main()
+{
+
+   int i,j;
+   int n;
+   printf("Enter the number");
+   scanf("%d",&n);
+   
+   for(i=1;i<=n;i++){
+       for(j=1;j<=i;j++){
+           printf("* ");
+       }
+       printf("\n");
+   }
+  
+}
+
+//PATTERN2
+#include <stdio.h>
+
+int main()
+{
+
+   int i,j;
+   int n;
+   printf("Enter the number");
+   scanf("%d",&n);
+   
+   for(i=1;i<=n;i++){
+       for(j=1;j<=n-i+1;j++){
+           printf("* ");
+       }
+       printf("\n");
+   }
+   return 0;
+}
+
+//PATTERN
+#include <stdio.h>
+
+int main()
+{
+
+   int i,j;
+   int n;
+   printf("Enter the number");
+   scanf("%d",&n);
+   
+   for(i=1;i<=n;i++){
+       for(j=1;j<=i;j++){
+           printf("%d ",j);
+       }
+       printf("\n");
+   }
+   return 0;
+}

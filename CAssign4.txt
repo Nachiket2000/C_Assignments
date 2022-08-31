@@ -1,0 +1,411 @@
+//FUNCTION
+
+//P1. FACTORIAL
+#include<stdio.h>
+int factorial(int n){
+    int fact=1;
+    while(n>0){
+        fact=fact*n;
+        n--;
+    }
+    return fact;
+}
+int main(){
+    int num;
+    printf("Enter the value of the number");
+    scanf("%d",&num);
+    int factoriallll=factorial(num);
+    printf("%d",factoriallll);
+    return 0;
+}
+
+//P2 Power
+#include<stdio.h>
+double power(int b, int i){
+    int power=1;
+    int n=1;
+    while(n<=i){
+        power=power*b;
+        n++;
+    }
+    return power;
+}
+int main(){
+    int base,index;
+    printf("Enter the value of base and index: ");
+    scanf("%d %d",&base,&index);
+    
+    int Fpower=power(base,index);
+    
+    printf("Power is %d ",Fpower);
+    
+    
+    return 0;
+}
+
+//P3 
+#include<stdio.h>
+#include<stdlib.h>
+int calc(int a,int b,char o)
+{
+    switch(o)
+    {
+        case '+':return a+b;
+        case '-':return a-b;
+        case '*':return a*b;
+        case '/':return a/b;
+        default:printf("Invalid operator");
+                exit(0); 
+    }
+}
+int main()
+{
+    int a,b;
+    char ch;
+    printf("Enter 2 nos. & operator-");
+    scanf("%d %d %c",&a,&b,&ch);
+    printf("Result- %d",calc(a,b,ch));
+    return 0;
+}
+
+//P5  Repeat character for inserted number of times
+#include<stdio.h>
+
+void repeat(int n,char c){
+	while(n>0){
+		printf("%c \n",c);
+		n--;
+	}
+}
+int main(){
+	int num;
+	char ch;
+	printf("Enter the no and character ");
+	scanf("%d %c",&num,&ch);
+	repeat(num,ch);
+}
+
+//p6 PASCALS TRIANGLE
+#include <stdio.h>
+int factorial(int n){
+	int fact=1;
+	while(n>0){
+		fact=fact*n;
+		n--;
+	}
+	return fact;
+}
+
+int ncr(int n,int col){
+	return factorial(n)/(factorial(n-col)*factorial(col));
+}
+
+int main(){
+	int n,i,j;
+	printf("Enter the number of rows: ");
+	
+	scanf("%d",&n);
+	for(i=0;i<=n;i++){
+		for(j=1;j<=n-i;j++){
+			printf(" ");
+		}
+		
+		for(j=0;j<=i;j++){
+			printf("%3d",ncr(i,j));
+		}
+		printf("\n");
+	}
+}
+
+//P7
+#include <stdio.h>
+int fibo(int a,int b){
+	int sum=a+b;
+	return sum;
+}
+int main(){
+	int a=0;
+	int b=1;
+	int n;
+	scanf("%d",&n);
+	int i=1;
+	printf("%d\t %d \t",a,b);
+	while(i<=n-2){
+		
+		int temp=fibo(a,b);
+		printf("%d\t",temp);
+		a=b;
+		b=temp;
+		i++;
+		
+		
+	}
+	return 0;
+}
+
+//P8 PRIME OR NOT
+#include<stdio.h>
+#include<stdbool.h>
+bool isPrime(int n){
+    int count=0;
+    for(int i=2;i<n/2;i++){
+        if(n%i==0){
+            count=1;
+        }
+    }
+    if(count==0){
+        return true;
+    }
+    return false;
+}
+
+int range(int lo,int up){
+    for(int i=lo;i<=up;i++){
+        if (isPrime(i)==true){
+            printf("%d\t",i);
+        }
+    }
+    return 0;
+}
+int main(){
+    int num,lo,up;
+    printf("Print the number,lower range,upper range: ");
+    scanf("%d %d %d",&num,&lo,&up);
+    
+    if(isPrime(num)==1){
+        printf("Prime");
+    }
+    else{
+        printf("Not prime");
+    }
+    range(lo,up);
+}
+
+//P10 LEAP YEAR
+#include<stdio.h>
+#include<stdbool.h>
+bool isLeap(int n){
+     
+    if(n%400==0 || n%100!=0 && n%4==0)
+    return true;
+    else
+    return false;
+}
+
+int main(){
+    int year;
+    printf("Input Year-");
+    scanf("%d",&year);
+    
+    if(isLeap(year)==1){
+        printf("Leap year");
+    }
+    else{
+        printf("Not a Leap year");
+    }
+}
+
+
+
+
+//ITERATION 
+//RECURSION
+
+//P1 FACTORIAL
+#include<stdio.h>
+int fact(int num){
+    if(num==0 || num==1){
+        return 1;
+    }
+    else{
+        return num*fact(num-1);
+    }
+    
+    
+}
+int main(){
+    int num;
+    printf("Enter the number-");
+    scanf("%d",&num);
+    
+    int factorial=fact(num);
+    
+    printf("Factorial of %d is %d ",num,factorial);
+}
+
+//Power using recursion in c
+#include <stdio.h>
+int power(int n1, int n2);
+int main() {
+    int base, a, result;
+    printf("Enter base number: ");
+    scanf("%d", &base);
+    printf("Enter power number(positive integer): ");
+    scanf("%d", &a);
+    result = power(base, a);
+    printf("%d^%d = %d", base, a, result);
+    return 0;
+}
+
+int power(int base, int a) {
+    if (a != 0)
+        return (base * power(base, a - 1));
+    else
+        return 1;
+}
+
+//GCD using Recursion
+#include <stdio.h>
+int hcf(int n1, int n2);
+int main() {
+    int n1, n2;
+    printf("Enter two positive integers: ");
+    scanf("%d %d", &n1, &n2);
+    printf("G.C.D of %d and %d is %d.", n1, n2, hcf(n1, n2));
+    return 0;
+}
+
+int hcf(int n1, int n2) {
+    if (n2 != 0)
+        return hcf(n2, n1 % n2);
+    else
+        return n1;
+}
+
+//FIBONACCI series using recursion
+#include <stdio.h>
+int fib(int n)
+{
+    if (n <= 1)
+        return n;
+    return fib(n - 1) + fib(n - 2);
+}
+ 
+int main()
+{
+    int n = 9;
+    printf("%d", fib(n));
+    getchar();
+    return 0;
+}
+
+//BINARY REPRESENTATION OF A NUMBER
+#include<stdio.h>
+#include <stdlib.h>
+ 
+char* toBinary(int n, int len)
+{
+    char* binary = (char*)malloc(sizeof(char) * len);
+    int k = 0;
+    for (unsigned i = (1 << len - 1); i > 0; i = i / 2) {
+        binary[k++] = (n & i) ? '1' : '0';
+    }
+    binary[k] = '\0';
+    return binary;
+}
+ 
+int main(void)
+{
+    int n = 20;
+    int len = 32;
+ 
+    char* binary = toBinary(n, len);
+    printf("The binary representation of %d is %s", n, binary);
+    free(binary);
+ 
+    return 0;
+}
+
+//Program to print the given Integer in Hexa decimal format
+#include<stdio.h>
+int main()
+{
+	int num;
+	printf("Enter an Integer Number:");
+	scanf("%d",&num); 	
+	printf("Equivalent Hex Value: %x",num);	
+	return  0;
+}
+
+
+
+//POINTERS 
+//Function to swap two numbers
+#include <stdio.h>
+void swap(int *x,int *y)
+{
+    int t;
+     t   = *x;
+    *x   = *y;
+    *y   =  t;
+}
+
+int main()
+{
+    int num1,num2;
+
+    printf("Enter value of num1: ");
+    scanf("%d",&num1);
+    printf("Enter value of num2: ");
+    scanf("%d",&num2);
+
+    printf("Before Swapping: num1 is: %d, num2 is: %d\n",num1,num2);
+
+    swap(&num1,&num2);
+
+    printf("After  Swapping: num1 is: %d, num2 is: %d\n",num1,num2);
+
+    return 0;
+}
+
+//Addition using pointers
+#include<stdio.h>  
+  
+void addition(int, int, int*);  
+  
+int main()  
+{  
+    int a, b, c;  
+  
+    printf("Enter 2 numbers\n");  
+    scanf("%d%d", &a, &b);  
+  
+    addition(a, b, &c);  
+  
+    printf("%d + %d = %d\n", a, b, c);  
+  
+    return 0;  
+}  
+  
+void addition(int x, int y, int *z)  
+{  
+    *z = x + y;  
+}  
+
+//function calculator
+#include <stdio.h>
+int sum(int num1, int num2);
+int sub(int num1, int num2);
+int mult(int num1, int num2);
+int div(int num1, int num2);
+
+int main() 
+{  int x, y, choice, result;
+  int (*ope[4])(int, int);
+  ope[0] = sum;
+  ope[1] = sub;
+  ope[2] = mult;
+  ope[3] = div;
+  printf("Enter two integer numbers: ");
+  scanf("%d%d", &x, &y);
+  printf("Enter 0 to sum, 1 to subtract, 2 to multiply, or 3 to divide: ");
+  scanf("%d", &choice);
+  result = ope[choice](x, y);
+  printf("%d", result);
+return 0;}
+
+int sum(int x, int y) {return(x + y);}
+int sub(int x, int y) {return(x - y);}
+int mult(int x, int y) {return(x * y);}
+int div(int x, int y) {if (y != 0) return (x / y); else  return 0;}
+

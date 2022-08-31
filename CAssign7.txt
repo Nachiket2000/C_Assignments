@@ -1,0 +1,263 @@
+//p1
+#include<stdio.h>
+int getArray(int r,int c)
+{
+    int arr[r][c];
+    printf("Enter the %d elements:",r*c);
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            scanf("%d",&arr[i][j]);
+    }
+    return 0;
+}
+
+int showArray(int r,int c)
+{
+    int arr[r][c];
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            printf("%d ",arr[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+
+int main()
+{
+    int r,c;
+    printf("Enter rows and columns:");
+    scanf("%d %d",&r,&c);
+    getArray(r,c);
+    showArray(r,c);
+    return 0;
+}
+
+//p2
+#include<stdio.h>
+int getArray(int arr[][3],int arr1[][3],int r,int c)
+{
+    
+    printf("Enter the %d elements of 1st matrix:",r*c);
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            scanf("%d",&arr[i][j]);
+    }
+    printf("Enter the %d elements of 2nd matrix:",r*c);
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            scanf("%d",&arr1[i][j]);
+    }
+    return 0;
+}
+
+int addArray(int arr[][3],int arr1[][3],int add[][3],int r,int c)
+{
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        add[i][j]=arr[i][j]+arr1[i][j];
+    }
+    printf("Sum of matrices:\n");
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            printf("%d ",add[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+
+int subArray(int arr[][3],int arr1[][3],int sub[][3],int r,int c)
+{
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        sub[i][j]=arr[i][j]-arr1[i][j];
+    }
+    printf("Difference of matrices:\n");
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            printf("%d ",sub[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+
+int mulArray(int arr[][3],int arr1[][3],int mul[][3],int r,int c)
+{
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            mul[i][j]=0;    
+            for(int k=0;k<c;k++)    
+            {    
+                mul[i][j]+=arr[i][k]*arr1[k][j];    
+            }    
+        }
+    }
+    printf("Multiplication of matrices:\n");
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            printf("%d ",mul[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+
+int main()
+{
+    int r=3,c=3;
+    int arr[r][c],arr1[r][c],add[r][c],sub[r][c],mul[r][c];
+    getArray(arr,arr1,r,c);
+    addArray(arr,arr1,add,r,c);
+    subArray(arr,arr1,sub,r,c);
+    mulArray(arr,arr1,mul,r,c);
+    return 0;
+}
+
+//p3
+#include<stdio.h>
+int getArray(int arr[][20],int r,int c)
+{
+    
+    printf("Enter the %d elements of matrix:",r*c);
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            scanf("%d",&arr[i][j]);
+    }
+    return 0;
+}
+
+int showArray(int arr[][20],int r,int c)
+{
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+            printf("%d ",arr[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+
+int addRow(int arr[][20],int c,int r1)
+{
+    int sum=0;
+    for(int i=0;i<c;i++)
+        sum+=arr[r1][i];
+    printf("Sum of elements of %dth row: %d\n",r1,sum);
+    return 0;
+}
+
+int addColumn(int arr[][20],int r,int c1)
+{
+    int sum=0;
+    for(int i=0;i<r;i++)
+        sum+=arr[i][c1];
+    printf("Sum of elements of %dth column: %d\n",c1,sum);
+    return 0;
+}
+
+int main()
+{
+    int r,c,r1,c1;
+    printf("Enter rows and columns:");
+    scanf("%d %d",&r,&c);
+    int arr[r][c];
+    getArray(arr,r,c);
+    showArray(arr,r,c);
+    printf("Enter row to be added:");
+    scanf("%d",&r1);
+    addRow(arr,c,r1-1);
+    printf("Enter column to be added:");
+    scanf("%d",&c1);
+    addColumn(arr,r,c1-1);
+    return 0;
+}
+
+//p4
+
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
+char getname(char name[][30]){
+    for(int i=0; i<5; i++)
+     scanf("%s[^\n]",name[i]);
+     return name[5][30];
+}
+char showname(char name[][30]){
+    printf("\nEntered names are:\n");
+     for(int i=0;i<5;i++)
+     puts(name[i]);
+}
+char sortname(char name[][30]){
+    char t[20];
+    for(int i=1; i<5; i++)
+   {
+      for(int j=1; j<5; j++)
+      {
+         if(strcmp(name[j-1], name[j])>0)
+         {
+            strcpy(t, name[j-1]);
+            strcpy(name[j-1], name[j]);
+            strcpy(name[j], t);
+         }
+      }
+   }
+   printf("\n Names in alphabetical order are :\n");
+   for(int i=0; i<5; i++)
+      printf("%s\n", name[i]);
+   getch();
+}
+int main()
+{
+    char name[5][30];
+    int n =5;
+    
+    getname(name);
+    showname(name);
+    sortname(name);
+    return 0;
+}
+
+//p5
+
+
+//p6
+#include <stdio.h>
+#include <stdlib.h>
+
+int allocmemo(){
+    int* A = (int*)malloc(5 * 6 * sizeof(int));
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 6; j++) {
+            *(A + i*6 + j) = rand() % 100;            
+        }
+    }
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 6; j++) {
+            printf("%d ", (A + i*6)[j]);    // or, use *(A + r*N + c)
+        }
+        printf("\n");
+    }
+
+
+}
+
+int main()
+{
+
+    
+    allocmemo();
+
+    return 0;
+}

@@ -1,0 +1,323 @@
+//p1
+#include<stdio.h>
+#include<string.h>
+#include<stddef.h>
+typedef struct student{
+    int roll;
+    char name[10];
+    int marks;
+}data;
+
+int main()
+{
+    data x;
+    
+    scanf("%d",&x.roll);
+    strcpy(x.name,"Rahul");
+    x.marks=90;
+    
+    data *p;
+    p=&x;
+    printf("Roll- %d\n",p->roll);
+    printf("Name- %s\n",p->name);
+    printf("Marks- %d\n",p->marks);
+    
+    printf("Size of roll is : %ld\n",sizeof(x.roll));
+    printf("Size of name is : %ld\n",sizeof(x.name));
+    printf("Size of marks is : %ld\n",sizeof(x.marks));
+    printf("Offset of roll is : %ld\n",offsetof(data,roll));
+    printf("Offset of name is : %ld\n",offsetof(data,name));
+    printf("Offset of marks is : %ld\n",offsetof(data,marks));
+    
+    return 0;
+}
+
+//p2
+#include<stdio.h>
+
+struct A {
+        int x;
+        double y;
+        float z;
+        char ch;
+    }a1;
+
+int main()
+{
+    printf("Address of 'x' is : %ld\n",&a1.x);
+    printf("Address of 'y' is : %ld\n",&a1.y);
+    printf("Address of 'z' is : %ld\n",&a1.z);
+    printf("Address of 'ch' is : %ld\n",&a1.ch);
+    printf("Base addfress of 'a1' is : %ld",&a1);
+    return 0;
+}
+
+//p3
+#include<stdio.h>
+#include<string.h>
+#include<stddef.h>
+typedef struct student{
+    int roll;
+    char name[10];
+    int marks[5];
+    int totmarks;
+}data;
+
+int main()
+{
+    data school[5];
+    int subtot[5];
+    for(int i=0;i<5;i++)
+    {
+        printf("Enter Roll no.- ");
+        scanf("%d",&school[i].roll);
+        printf("Enter Name - ");
+        scanf("%s",school[i].name);
+        printf("Enter marks of 5 subjects - ");
+        for(int j=0;j<5;j++)
+            scanf("%d",&school[i].marks[j]);
+    }
+    for(int i=0;i<5;i++)
+    {
+        school[i].totmarks=0;
+        for(int j=0;j<5;j++)
+            school[i].totmarks+=school[i].marks[j];
+        
+    }
+    for(int i=0;i<5;i++)
+    {
+        subtot[i]=0;
+        for(int j=0;j<5;j++)
+            subtot[i]+=school[j].marks[i];
+    }
+    for(int i=0;i<5;i++)
+        {
+        printf("Name- %s\n",school[i].name);
+        printf("Roll no.- %d\n",school[i].roll);
+        for(int j=0;j<5;j++)
+            printf("Subject %d - %d\n",j+1,school[i].marks[j]);
+        printf("Total marks - %d\n",school[i].totmarks);
+        }
+    printf("Subject wise total marks:\n");
+    for(int i=0;i<5;i++)
+        printf("Subject %d - %d\n",i+1,subtot[i]);
+    return 0;
+}
+
+//p4
+#include<stdio.h>
+#include<stddef.h>
+
+typedef struct employee{
+    int empid;
+    char empname[10];
+    int salary;
+    int yoj;
+    int serv;
+}data;
+int service(data office[])
+{
+    for(int i=0;i<3;i++)
+    {
+        office[i].serv=2022-office[i].yoj;
+    }
+    return 0;
+}
+int main()
+{
+    data office[3];
+    int totsal=0,max,min;
+    double avgsal;
+    for(int i=0;i<3;i++)
+    {
+        printf("Enter employee id - ");
+        scanf("%d",&office[i].empid);
+        printf("Enter name - ");
+        scanf("%s",office[i].empname);
+        printf("Enter salary - ");
+        scanf("%d",&office[i].salary);
+        printf("Enter year of joining - ");
+        scanf("%d",&office[i].yoj);
+    }
+    for(int i=0;i<3;i++)
+    {
+        totsal+=office[i].salary;
+    }
+    avgsal=totsal/3;
+    max=office[0].salary;
+    min=office[0].salary;
+    for(int i=0;i<3;i++)
+    {
+        if(office[i].salary<min)
+            min=office[i].salary;
+        if(office[i].salary>max)
+            max=office[i].salary;
+    }
+    service(office);
+    for(int i=0;i<3;i++)
+    {
+        printf("Employee Id - %d\n",office[i].empid);
+        printf("Employee Name - %s\n",office[i].empname);
+        printf("Employee Salary - %d\n",office[i].salary);
+        printf("Year of Joining - %d\n",office[i].yoj);
+        printf("Service - %d\n",office[i].serv);
+        printf("Total Salary - %d\n",totsal);
+        printf("Average Salary - %2lf\n",avgsal);
+        printf("Maximum Salary - %d\n",max);
+        printf("Minimum Salary - %d\n",min);
+    }
+    return 0;
+}
+
+//p5
+#include<stdio.h>
+#include<stddef.h>
+struct A
+{
+int x;
+char str[20]; 
+};
+int main()
+{
+struct A a1 = { 101, “abc” } , a2;
+a1.x=10;
+strcpy(a1.str,"hello"); 
+scanf("%d%s",&a1.x,a1.str); 
+a2 = a1; 
+}
+
+//p6
+#include<stdio.h>
+
+typedef struct A {
+        int x;
+        double y;
+        float z;
+        char ch;
+    }a1;
+
+int main()
+{
+    struct A wtd;
+    a1 td;
+    wtd.x=10;
+    td.x=10;
+    printf("Accessing 'x' without using typedef : %d\n",wtd.x);
+    printf("Accessing 'x' with using typedef : %d",td.x);
+    return 0;
+}
+
+//p7
+#include<stdio.h>
+
+struct A {
+        int x;
+        double y;
+        struct B
+        {
+            float z;
+            char ch;
+        }b1;
+    }a1;
+
+int main()
+{
+    a1.x=10;
+    a1.y=23.0;
+    a1.b1.z=10.0;
+    a1.b1.ch='Z';
+    printf("Accessing 'x'  : %d\n",a1.x);
+    printf("Accessing 'y'  : %lf\n",a1.y);
+    printf("Accessing 'z'  : %f\n",a1.b1.z);
+    printf("Accessing 'ch'  : %c\n",a1.b1.ch);
+    return 0;
+}
+
+//p8
+#include<stdio.h>
+#include<stddef.h>
+union A
+{
+int x;
+int y;
+char ch;
+};
+int main()
+{
+union A a1;
+a1.x=0x10; 
+a1.y=0x1121; 
+printf("%d %c",a1.x, a1.ch);
+printf("\nSize of union = %ld\n",sizeof(a1));
+printf("Offset of 'x' - %ld\n",offsetof(union A,x));
+printf("Offset of 'y' - %ld\n",offsetof(union A,y));
+printf("Offset of 'ch' - %ld\n",offsetof(union A,ch));
+}
+
+//p9
+#include<stdio.h>
+#include<stddef.h>
+union A
+{
+int x;
+float y;
+double z;
+int arr[2];
+}a1;
+
+union B
+{
+int x;
+short int y;
+char ch;
+char carr[4];
+}b1;
+
+int main()
+{
+a1.y=6.25f;
+printf("x=%x\n",a1.x);
+a1.z=0.15625;;
+printf("%x%x\n",a1.arr[1],a1.arr[0]);
+b1.x=0x41424344;
+printf("Values of b1.y and b1.ch %d\t%c\n",b1.y,b1.ch);
+printf("Value of b1.carr = %s\n",b1.carr);
+printf("Value of b1.x before modifying b1.y= %d\n",b1.x);
+b1.y=9;
+printf("Value of b1.x after modifying b1.y= %d\n",b1.x);
+}
+
+//p10
+#include<stdio.h>
+
+struct A{
+    int x;
+    union B{
+        int y;
+    }b1;
+}a1;
+
+union C{
+    int a;
+    struct D{
+        int b;
+    }d1;
+}c1;
+
+union E{
+    int c;
+    union F{
+        int d;
+    }f1;
+}e1;
+
+int main()
+{
+    a1.x=1;
+    a1.b1.y=2;
+    c1.a=3;
+    c1.d1.b=4;
+    e1.c=5;
+    e1.f1.d=6;
+    printf("%d\n%d\n%d\n%d\n%d\n%d",a1.x,a1.b1.y,c1.a,c1.d1.b,e1.c,e1.f1.d);
+}

@@ -1,0 +1,244 @@
+//1a.
+// #include<stdio.h>
+// int main(){
+//     int a,b;
+//     int sum;
+//     int diff;
+//     int prod;
+//     printf("value of a: ");
+//     scanf("%d",&a);
+//     printf("value of b: ");
+//     scanf("%d",&b);
+//     sum=a+b;
+//     printf("Sum is :%d \n",sum );
+    
+//     diff=a-b;
+//     printf("Difference is: %d \n",diff);
+
+//     prod=a*b;
+//     printf("Product is: %d \n",prod);
+
+//     return 0;
+// }
+
+//2
+// #include <stdio.h>
+ 
+// int main()
+// {
+//     int value=19;
+//     char chch=(char) value;
+//     printf("character value:%c\n",chch);
+    
+     
+//     printf("Decimal value is: %d\n",value);
+//     printf("Octal value is: %o\n",value);
+//     printf("Hexadecimal value is (Alphabet in small letters): %x\n",value);
+//     printf("Hexadecimal value is (Alphabet in capital letters): %X\n",value);
+     
+//     return 0;   
+// }
+
+//p3
+// #include<stdio.h>
+// int main(){
+//     char ch;
+//     printf("Enter the character: ");
+//     scanf("%c",&ch);
+
+//     int value2;
+//     printf("Enter a number: ");
+//     scanf("%d",&value2);
+//     char ch2=(char)value2;
+//     printf("The value of number in characters is:%c\n ",ch2);
+
+//     int value=(int)ch;
+//     printf("Decimal value of character:%d\n",value);
+//     printf("Octal value is: %o\n",value);
+//     printf("Hexadecimal value is (Alphabet in small letters): %x\n",value);
+
+    
+
+
+//     return 0;
+// }
+
+// p4
+// #include<stdio.h>
+// int main(){
+//     printf("*\n");
+//     printf("* *\n");
+//     printf("* * *\n");
+//     printf("* * * *\n");
+//     printf("* * * * *\n");
+//     return 0;
+// }
+
+// #include<stdio.h>
+// int main(){
+//     printf(" *\n * *\n * * *\n * * * *\n * * * * *");
+//     return 0;
+// }
+
+//p6
+// #include<stdio.h>
+// #include<conio.h>
+// int main()
+// {
+//     int num, i, tab;
+//     printf("Enter the number: ");
+//     scanf("%d", &num);
+//     printf("\nTable of %d is:\n", num);
+//     for(i=1; i<=10; i++)
+//     {
+//         tab = num*i;
+//         printf("%d * %d = %d\n", num, i, tab);
+//     }
+    
+//     return 0;
+// }
+
+
+// p5 TYPECASTING
+
+// #include<stdio.h>
+// #include<conio.h>
+// int main(){
+//     char ch='\n';
+//     int value=(int)ch;
+//     printf("%d\n",ch);
+    
+//     ch='\r';
+//     value=(int)ch;
+//     printf("%d\n",ch);
+    
+//      ch='\t';
+//      value=(int)ch;
+//     printf("%d\n",ch);
+    
+//     ch='\a';
+//      value=(int)ch;
+//     printf("%d\n",ch);
+    
+//     ch='\b';
+//      value=(int)ch;
+//     printf("%d\n",ch);
+//     getch();
+
+//     return 0;
+// }
+
+
+// p7a REVERSE A NUMBER
+
+// #include<stdio.h>
+// int main(){
+//     int num;
+//     int rev=0;
+//     printf("Enter a four digit number");
+//     scanf("%d",&num);
+//     for(;num>0;){
+//         rev=rev*10+(num%10);
+        
+//         num=num/10;
+//     }    
+//     printf("The reverse of the number is: %d",rev);
+        
+//     return 0;
+// }
+
+//p7b
+// #include<stdio.h>
+// #include<math.h>
+
+// int main(){
+//     int num;
+//     int num2;
+    
+//     printf("Enter a four digit number");
+//     scanf("%d",&num);
+//     for(int i=3;i>=0;i--){
+//         num2=pow(10,i);
+//         printf("%d\t",num/num2);
+//         num=num%num2;
+//     }
+//     return 0;
+// }
+
+// P7c
+// #include<stdio.h>
+// #include<math.h>
+
+// int main(){
+//     int num;
+//     int num2;
+    
+//     printf("Enter a four digit number");
+//     scanf("%d",&num);
+//     for(int i=3;i>=0;i--){
+//         num2=pow(10,i);
+//         printf("%d\t",(num/num2)num2);
+//         num=num%num2;
+//     }
+//     return 0;
+// }
+
+
+//p8 AVERAGE OF THREE NUMBERS
+
+// #include<stdio.h>
+// int main(){
+//     int a,b,c;
+//     float avg;
+//     printf("The value of a,b,c are: ");
+//     scanf("%d %d %d",&a,&b,&c);
+//     avg=(a+b+c)/3.0;
+//     printf("the avg is: %f ",avg);
+//     return 0;
+// }
+
+
+//p9 CELSIUS FAHREINHEIT CONVERTER
+
+#include<stdio.h>
+int main(){
+    float farh;
+    float cel;
+    printf("Enter temp in F");
+    scanf("%f",&farh);
+    cel=(5.0/9.0)*(farh-32.0);
+
+    printf("The temp in celsius is: %f",cel);
+
+
+
+   
+    return 0;
+}
+
+
+
+//p10 TRIANGLE PARAMETERS
+#include<stdio.h>
+#include<math.h>
+int main(){
+    float a,b,c;
+    float per,s,area;
+    printf("Enter the sides of the triangle");
+    scanf("%f %f %f",&a,&b,&c);
+    per= a+b+(c*a)+b+c;
+    s=(a+b+c)/2.0;
+    area=sqrt(s*(s-a)*(s-b)*(s-c));
+
+
+
+    printf("The perimeter of the triangle is: %f",per);
+     printf("The area of the triangle is: %f",area);
+
+
+
+   
+    return 0;
+}
+
+

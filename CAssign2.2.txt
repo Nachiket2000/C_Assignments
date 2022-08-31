@@ -1,0 +1,113 @@
+//P1 Days in a month
+
+#include<stdio.h>
+int main(){
+   int m;
+   printf("Enter the month: ");
+   scanf("%d",&m);
+   
+   switch(m){
+       case 1:
+       case 3:
+       case 5:
+       case 7:
+       case 8:
+       case 10:
+       case 12:
+            printf("31 days present ");
+            break;
+       case 4:
+       case 6:
+       case 9:
+       case 11:
+            printf("30 days present ");
+            break;
+       case 2:
+            printf("28/29days present ");
+            break;
+       deafult:
+            printf("Invalid month ");
+   }
+    return 0;
+}
+
+//P2 SIMPLE CALCULATOR
+#include <stdio.h>
+int main(){
+    char ch;
+    int a, b, result;
+    
+    printf("Enter an Operator (+, *, *, /): ");
+    scanf("%c", &ch);
+    printf("Enter two operands: \n");
+    scanf("%d %d", &a, &b);
+    
+    switch(ch){
+        case '+':
+            result = a + b;
+            break;
+        case '-':
+            result = a - b;
+            break;
+        case '*':
+            result = a * b;
+            break;
+        case '/':
+            result = a / b;
+            break;
+    }
+    printf("Result = %d", result);
+    return 0;
+}
+
+//P3 PROGRAM TO ACCEPT EMPLOYEE ID
+#include <stdio.h>
+int main(){
+    int employeeId,deptNo;
+    printf("Enter the employee id: ");
+    scanf("%d",employeeId);
+    
+    printf("Enter the department number: ");
+    scanf("%d",deptNo);
+    
+    
+    
+    char dprtName,,dsgnName,dsgnCode,dsgn;
+    printf("Enter the department name: ");
+    scanf("%c",dprtName);
+    
+    printf("Enter the designation Code: ");
+    scanf("%c",dsgnCode);
+    
+    printf("Enter the designation:");
+    scanf("%c",dsgn);
+    
+    switch(dsgnCode){
+        case 'M':
+              dprtName="Marketing";
+              dsgn="Manager";
+              printf("Employee with designation Code %d is working in %c department as %c.",dsgnCode,dprtName,dsgn);
+              break;
+        case 'S':
+              dprtName="management";
+              dsgn="Supervisor";
+        
+              printf("Employee with designation Code %d is working in %c department as %c.",dsgnCode,dprtName,dsgn);
+              break;
+        case 's':
+              dprtName="sales";
+              dsgn="Security Officer"
+              printf("Employee with designation Code %d is working in %c department as %c.",dsgnCode,dprtName,dsgn);
+              break;
+        case 'C':
+              dprtName="Designing";
+              dsgn="Clerk";
+              printf("Employee with designation Code %d is working in %c department as %c.",dsgnCode,dprtName,dsgn);
+              break;
+    }
+    
+    
+    return 0;
+}
+
+

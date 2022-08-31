@@ -1,0 +1,291 @@
+//p1
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+   FILE *fp;
+   char ch, fname[30];
+   int noOfChar=0, noOfSpace=0, noOfTab=0, noOfNewline=0;
+   int noOfVowel=0, noOfConsonant=0, noOfNumber=0;
+   printf("Enter file name with extension: ");
+   gets(fname);
+   fp = fopen(fname, "r");
+   while(fp)
+   {
+      ch = fgetc(fp);
+      if(ch==EOF)
+         break;
+      noOfChar++;
+      if(ch>=65 && ch<=90)
+      {
+         noOfConsonant++;
+         if(ch=='A' || ch=='E' || ch=='I' || ch=='O' || ch=='U')
+            noOfVowel++;
+      }
+      if(ch>=97 && ch<=122)
+      {
+         noOfConsonant++;
+         if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+            noOfVowel++;
+      }
+      if(ch>=48 && ch<=57)
+         noOfNumber++;
+      if(ch==' ')
+         noOfSpace++;
+      if(ch=='\t')
+         noOfTab++;
+      if(ch=='\n')
+         noOfNewline++;
+   }
+   fclose(fp);
+   printf("\nTotal Number of Characters = %d", noOfChar);
+   printf("\nTotal Number of Spaces = %d", noOfSpace);
+   printf("\nTotal Number of Tabs = %d", noOfTab);
+   printf("\nTotal Number NewLines = %d", noOfNewline);
+   printf("\nTotal Number Vowels = %d", noOfVowel);
+   printf("\nTotal Number of Consonants = %d", noOfConsonant);
+   printf("\nTotal Number of Numbers = %d", noOfNumber);
+   getch();
+   return 0;
+}
+
+
+//p2
+#include <stdio.h>
+#include <stdlib.h> 
+  
+int main()
+{
+    FILE *fptr1, *fptr2;
+    char filename[100], c;
+  
+    printf("Enter the filename to open for reading \n");
+    scanf("%s", filename);
+  
+    // Open one file for reading
+    fptr1 = fopen(filename, "r");
+    if (fptr1 == NULL)
+    {
+        printf("Cannot open file %s \n", filename);
+        exit(0);
+    }
+  
+    printf("Enter the filename to open for writing \n");
+    scanf("%s", filename);
+  
+    // Open another file for writing
+    fptr2 = fopen(filename, "w");
+    if (fptr2 == NULL)
+    {
+        printf("Cannot open file %s \n", filename);
+        exit(0);
+    }
+  
+    // Read contents from file
+    c = fgetc(fptr1);
+    while (c != EOF)
+    {
+        fputc(c, fptr2);
+        c = fgetc(fptr1);
+    }
+  
+    printf("\nContents copied to %s", filename);
+  
+    fclose(fptr1);
+    fclose(fptr2);
+    return 0;
+}
+
+//p3
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void compareFiles(FILE *file1, FILE *file2){
+   char ch1 = getc(file1);
+   char ch2 = getc(file2);
+   int error = 0, pos = 0, line = 1;
+   while (ch1 != EOF && ch2 != EOF){
+      pos++;
+      if (ch1 == '\n' && ch2 == '\n'){
+         line++;
+         pos = 0;
+      }
+      if (ch1 != ch2){
+         error++;
+         printf("Line Number : %d \tError"
+         " Position : %d \n", line, pos);
+      }
+      ch1 = getc(fp1);
+      ch2 = getc(fp2);
+   }
+   printf("Total Errors : %d\t", error);
+}
+int main(){
+   FILE *file1 = fopen("file1.txt", "r");
+   FILE *file2 = fopen("file2.txt", "r");
+   if (file1 == NULL || file2 == NULL){
+      printf("Error : Files not open");
+      exit(0);
+   }
+   compareFiles(file1, file2);
+   fclose(file1);
+   fclose(file2);
+   return 0;
+}
+
+
+//p5
+#include <stdio.h>
+int main() {
+	char stud_name[50];
+	char address[50];
+	int roll_no,i,n;
+	printf("Enter total no. of students: ");
+	scanf("%d",&n);
+	printf("File Name: ");
+	scanf("%s", filename);
+	FILE *fptr;
+	fptr=(fopen(filename3,"w"));
+	if(fptr==NULL) {
+		printf("Error!");
+		exit(1);
+	}
+	for (i=0;i<n;++i) {
+	    printf("Enter Roll no. ");
+		scanf("%d",&roll_no);
+		printf("Student name: ");
+		scanf("%s",stud_name);
+		printf("Address: ");
+		scanf("%s",address);
+		
+		fprintf(fptr,"\nName: %s \nRoll n0.=%d \nAddress: %s\n",stud_name,roll_no,address);
+	}
+	fclose(fptr);
+	return 0;
+}
+
+
+
+//p7
+#include <stdio.h>
+#include <stdbool.h>
+#include <unistd.h>
+
+int main()
+{
+  char filename[100];
+
+  FILE *read;
+  FILE *write;
+  char remove;
+
+  scanf("%c", &remove);
+  scanf("%s", filename);
+  
+  read = fopen(filename, "r");
+  write = fopen(filename, "r+");
+  
+  if (read == NULL || write == NULL)
+  {
+    printf("Error opening file.\n");
+    return 1;
+  }
+
+  int c;
+  int cnt = 0;
+
+  while (true)
+  {
+    c = fgetc(read);
+    if (feof(read) || ferror(read))
+      break;
+    
+    
+    if (c != remove)
+    {
+      fputc(c, write);
+      cnt++;
+    }
+  }
+  
+  if (truncate(filename, cnt) == -1)
+  {
+    printf("Error truncating file.\n");
+    return 1;
+  }
+
+
+  return 0;
+}
+
+//p8
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void replaceWordinFile()
+{
+	FILE *sp, *rp;
+	char word[100], ch, read[100], replace[100];
+	int word_len, i, p = 0;
+
+	sp = fopen("file_search_input.txt", "r");
+	rp = fopen("file_replace_output.txt", "w+");
+	if (sp == NULL || rp == NULL) {
+		printf("Can't open file.");
+		exit(0);
+	}
+	puts("File SHown :\n");
+
+	while (1) {
+		ch = fgetc(sp);
+		if (ch == EOF) {
+			break;
+		}
+		printf("%c", ch);
+	}
+
+	puts("\n\nEnter the word to find:");
+	fgets(word, 100, stdin);
+
+	word[strlen(word) - 1] = word[strlen(word)];
+
+	puts("Enter the word to replace it with :");
+	fgets(replace, 100, stdin);
+
+	replace[strlen(replace) - 1] = replace[strlen(replace)];
+
+	fprintf(rp, "%s - %s\n", word, replace);
+
+	rewind(sp);
+	while (!feof(sp)) {
+
+		fscanf(sp, "%s", read);
+
+		if (strcmp(read, word) == 0) {
+			strcpy(read, replace);
+		}
+
+		
+		fprintf(rp, "%s ", read);
+	}
+
+	
+	rewind(rp);
+	while (1) {
+		ch = fgetc(rp);
+		if (ch == EOF) {
+			break;
+		}
+		printf("%c", ch);
+	}
+
+	fclose(sp);
+	fclose(rp);
+}
+
+void main()
+{
+	replaceWordinFile();
+}
+
